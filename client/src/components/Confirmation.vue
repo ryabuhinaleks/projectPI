@@ -10,7 +10,7 @@
                     <div style=" text-align: right;">
                       <button @click="save" class="btn btn-primary" style="width: 78px;">Ok</button>
                       <button @click="cancel" class="btn btn-primary" style="width: 78px;">Cancel</button></br>
-                      <span class='success' style="color: green;">{{success}}</span> 
+                      <span class='success' style="color: red;">{{error}}</span> 
                     </div>
                   </div>  
                 </div>
@@ -27,37 +27,38 @@ export default {
   name: 'UpdateLoginInformation',
   data() {
     return {
-      fname: '',
-      lname: '',
-      country: '',
-      img: '',
-      about: '',
       pin: '',
-      success: '',
+      pin_2: '',
+      error: '',
+      id: this.$route.params.id,
+      id_doc: this.$route.params.id_doc,
     }
   },
   
   mounted() {
     axios.get('/user', { headers: { token: localStorage.getItem('token')}})
       .then(res => {
-        this.fname = res.data.fname;
-        this.lname = res.data.lname;
-        this.country = res.data.country;
-        this.img = res.data.img;
-        this.about = res.data.about;
-        this.pin = res.data.pin;
+        this.pin_2 = res.data.pin;
       })
   },
   methods: {
     cancel(){
-          this.$router.push('/username');
+        this.$router.push('/event/'+this.id+'/documents/');
     },
     
     save(){
-        axios.put(`/updateProfile`,{ fname: this.fname, lname: this.lname ,country:this.country, about:this.about, pin:this.pin, token: localStorage.getItem('token')})               
-        .then((res) => {
-          this.success='Data updated successfully'
-            })
+      if(this.pin==this.pin_2)
+      {
+        axios.put('/UpdateState/'+this.id_doc)        
+        .then((res) => 
+        {
+            this.$router.push('/event/'+this.id+'/documents/');
+        })
+      }
+      else
+      {
+          this.error="Incorrect Pin";
+      }
     },
   }
 }

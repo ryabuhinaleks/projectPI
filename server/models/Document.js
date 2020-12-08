@@ -2,38 +2,32 @@ const Sequelize = require("sequelize");
 const db = require("../database/db.js");
 
 module.exports = db.sequelize.define(
-  "users",
+  "documents",
   {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    fname: {
+    id_event: {
+      type: Sequelize.INTEGER    
+    },
+    id_user: {
+      type: Sequelize.INTEGER    
+    },
+    title: {
       type: Sequelize.STRING
     },
-    lname: {
+    day: {
+      type: Sequelize.DATE
+    },
+    role: {
       type: Sequelize.STRING
     },
-    country: {
-      type: Sequelize.STRING
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    password: {
-        type: Sequelize.TEXT
-    },
-    img: {
-      type: Sequelize.STRING
-    },
-    about: {
+    content: {
       type: Sequelize.TEXT
     },
-    pin: {
-      type: Sequelize.STRING
-    },
-    roled: {
+    state: {
       type: Sequelize.STRING
     },
     },

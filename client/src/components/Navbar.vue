@@ -10,8 +10,17 @@
           <li class="nav-item active" v-if="this.flag == false">
             <a class="nav-link" href="/#/username">Profile</a>
           </li>
+
           <li class="nav-item active" v-if="this.flag == false">
             <a class="nav-link" href="/#/events">Events</a>
+          </li>
+
+          <li class="nav-item active" v-if="this.flag == false">
+            <a class="nav-link" href="/#/documents">Documents</a>
+          </li>
+
+          <li class="nav-item active" v-if="this.status == 'admin'">
+            <a class="nav-link" href="/#/admin">Admin</a>
           </li>
 
           <li class="nav-item active" v-if="this.flag == true">
@@ -33,6 +42,7 @@
         {
           return {
             flag:true,
+            status:'',
           }
         },
         
@@ -41,7 +51,13 @@
           {
             this.flag=false
             this.hr="/#/calendar";
+            
+            axios.get('/user', { headers: { token: localStorage.getItem('token')}})
+            .then(res => {
+                this.status=res.data.roled
+              })
           }
+
         },
         methods:{
  

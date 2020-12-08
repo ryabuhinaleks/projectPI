@@ -33,6 +33,12 @@ module.exports = db.sequelize.define(
     img: {
       type: Sequelize.STRING
     },
+    role: {
+      type: Sequelize.STRING
+    },
+    status: {
+      type: Sequelize.STRING
+    },
     },
     {
       timestamps: false

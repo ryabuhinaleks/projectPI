@@ -75,4 +75,16 @@ router.post('/createEvent', (req, res, next) => {
 
 })
 
+
+router.put('/updateEvent', (req, res, next) => 
+{
+  Event.update(
+    { title: req.body.event.title, sDate: req.body.event.sDate, c1Date: req.body.event.c1Date, c_1Date: req.body.event.c_1Date, fDate: req.body.event.fDate,  participants: req.body.event.participants},
+    { where: { id: req.body.event.id } })   
+    return res.status(200).json({
+      title: 'Данные обновлены!',
+    })
+})
+
+
 module.exports = router

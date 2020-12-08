@@ -78,7 +78,7 @@ export default {
       rep_password: '',
       img: "default.jpg",
       about: '',
-      pin: '',
+      pin: '********',
       error: '',
     }
   },
@@ -95,7 +95,6 @@ export default {
         this.email = res.data.email;
         this.img = res.data.img;
         this.about = res.data.about;
-        this.pin = res.data.pin;
       })
   },
   methods: {

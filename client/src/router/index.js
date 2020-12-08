@@ -9,6 +9,15 @@ import Pin from '@/components/Pin'
 import Events from '@/components/Events'
 import Event from '@/components/Event'
 import CreateEvent from '@/components/CreateEvent'
+import EventInformation from '@/components/EventInformation'
+import Participants from '@/components/Participants'
+import Dates from '@/components/Dates'
+import Documents from '@/components/Documents'
+import Confirmation from '@/components/Confirmation'
+import DocumentInformation from '@/components/DocumentInformation'
+import My_documents from '@/components/My_documents'
+import Admin from '@/components/Admin'
+
 
 Vue.use(Router)
 
@@ -58,6 +67,46 @@ export default new Router({
       path: '/events/newEvent',
       name: 'CreateEvent',
       component: CreateEvent
+    },
+    {
+      path: '/event/:id/info',
+      name: 'EventInformation',
+      component: EventInformation
+    },
+    {
+      path: '/event/:id/part',
+      name: 'Participants',
+      component: Participants
+    },
+    {
+      path: '/event/:id/dates',
+      name: 'Dates',
+      component: Dates
+    },
+    {
+      path: '/event/:id/documents',
+      name: 'Documents',
+      component: Documents
+    },
+    {
+      path: '/event/:id/documents/:id_doc',
+      name: 'Confirmation',
+      component: Confirmation
+    },
+    {
+      path: '/event/:id/documents/:id_doc/info',
+      name: 'DocumentInformation',
+      component: DocumentInformation
+    },
+    {
+      path: '/documents',
+      name: 'My_documents',
+      component: My_documents
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: Admin
     },
   ]
 })

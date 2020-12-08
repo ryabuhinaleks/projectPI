@@ -34,8 +34,8 @@ a {
 .table_col td{
   border-bottom: 1px solid white;
 }
-.table_col {
-      margin: auto;
+.table_col, .table_date {
+  margin: auto;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
   font-size: 17px;
   background: white;
@@ -47,14 +47,14 @@ a {
 color: #F5F6F6;
 border-left: none;
 }
-.table_col th {
+.table_col th, .table_date th {
 font-weight: normal;
 border-bottom: 2px solid #F5E1A6;
 border-right: 20px solid white;
 border-left: 20px solid white;
 padding: 8px 10px;
 }
-.table_col td {
+.table_col td, .table_date td {
 border-right: 20px solid white;
 border-left: 20px solid white;
 padding: 12px 10px;
