@@ -3,7 +3,6 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;"> 
           <form  @submit.prevent="">
-
                 <div style="padding: 13px 13px 2px 13px;">
                   <div style="text-align: initial;">
                     <label style="padding-right: 9px;"><b>E-mail: </b></label>{{email}}</br>
@@ -18,7 +17,6 @@
                     </div>
                   </div>  
                 </div>
-
           </form>
         </div>
     </div>
@@ -26,7 +24,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'UpdateLoginInformation',
   data() {
@@ -61,7 +58,6 @@ export default {
     cancel(){
           this.$router.push('/username');
     },
-
     updatePassword(){
         if(this.n_password!=this.r_password)
         {
@@ -94,4 +90,3 @@ export default {
   }
 }
 </script>
-

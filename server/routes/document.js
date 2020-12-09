@@ -76,4 +76,53 @@ router.delete('/document/:id', (req, res, next) => {
   res.send("Document is deleted");
 })
 
+
+router.post('/createDocument', (req, res, next) => {
+  
+  if (!(req.body.document.id_event!="n1" && req.body.document.title && req.body.document.day!="n1" && req.body.document.role && req.body.document.content)) {
+    return res.status(401).json({
+      title: 'invalid credentials',
+      error: 'invalid credentials'
+    })
+  }
+
+    const newDocument = new Document({
+      title: req.body.document.title,
+      id_event: req.body.document.id_event,
+      id_user: req.body.document.id_user,
+      day: req.body.document.day,
+      role: req.body.document.role,
+      content: req.body.document.content,
+      state: req.body.document.state,
+    })
+    
+    newDocument.save();
+
+    Event.update(
+      { role: req.body.document.role},
+      { where: { id: req.body.document.id_event } })   
+
+    return res.status(200).json({
+      title: 'new document'
+    })
+
+
+})
+
+router.put('/UpdateDoc/:id', (req, res, next) => 
+{
+  Document.update(
+    { id_event: req.body.document.id_event, title: req.body.document.title, day: req.body.document.day, role: req.body.document.role, content: req.body.document.content},
+    { where: { id: req.params.id } }) 
+
+    Event.update(
+      { role: req.body.document.role},
+      { where: { id: req.body.document.id_event } }) 
+    
+    return res.status(200).json({
+      title: 'Data updated',
+    })  
+})
+
+
 module.exports = router

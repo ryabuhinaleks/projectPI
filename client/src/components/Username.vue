@@ -1,20 +1,16 @@
 <template>
-
  <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;">      
           <div style="font-size: 34px; height: 70px;">Username</div>
           <form  @submit.prevent="">
-
             <div class="form-group" style="display: inline-block;vertical-align: top;">              
               <img :src="require('@/assets/img/'+img)" style="width: 135px;height: 135px;"></br>
               <input type="file" name="image_uploads" style="cursor: pointer;"@change="onAttachmentChange"></br>
               <button class="btn btn-primary" style="margin-top: -37px;">Upload</button></br>
               <button @click="delete_img" class="btn btn-primary">Delete</button>
             </div>
-
             <div style="display: inline-block;text-align: right;margin-left: 40px;">
-              
               <div style="border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Login Information</b>
@@ -28,7 +24,6 @@
                   </div>  
                 </div>
               </div>
-
               <div style="margin-top: 20px;border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Profile Information</b>
@@ -44,7 +39,6 @@
                   </div>  
                 </div>
               </div>
-
               <div style="margin-top: 20px;border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Personal Identification Number</b>
@@ -119,7 +113,6 @@ export default {
           this.img=e.target.files[0].name;
         })
     },
-
     delete_img(){
         axios.put(`/updateImg`,{ img: 'default.jpg', token: localStorage.getItem('token')})        
         .then((res) => 
@@ -130,4 +123,3 @@ export default {
   }
 }
 </script>
-

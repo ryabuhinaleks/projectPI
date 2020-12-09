@@ -23,7 +23,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'Login',
   data() {
@@ -37,7 +36,6 @@ export default {
     signup(){
           this.$router.push('/signup');
     },
-
     login() {
       let user = {
         email: this.email,

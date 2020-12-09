@@ -5,31 +5,25 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-
         <ul class="navbar-nav">
           <li class="nav-item active" v-if="this.flag == false">
             <a class="nav-link" href="/#/username">Profile</a>
           </li>
-
           <li class="nav-item active" v-if="this.flag == false">
             <a class="nav-link" href="/#/events">Events</a>
           </li>
-
           <li class="nav-item active" v-if="this.flag == false">
             <a class="nav-link" href="/#/documents">Documents</a>
           </li>
-
           <li class="nav-item active" v-if="this.status == 'admin'">
             <a class="nav-link" href="/#/admin">Admin</a>
           </li>
-
           <li class="nav-item active" v-if="this.flag == true">
             <a class="nav-link" href="/#/login">Sign In</a>
           </li>
           <li class="nav-item active" v-if="this.flag == true">
             <a class="nav-link" href="/#/signup">Sign Up</a>
           </li>
-
         </ul>
       </div>
     </nav>
@@ -44,8 +38,7 @@
             flag:true,
             status:'',
           }
-        },
-        
+        },       
         mounted() {
           if(localStorage.getItem('token')!=null)
           {
@@ -57,7 +50,6 @@
                 this.status=res.data.roled
               })
           }
-
         },
         methods:{
  

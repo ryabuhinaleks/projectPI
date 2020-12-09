@@ -19,9 +19,10 @@
                           <td>{{d[0]}}</td>
                           <td>{{d[1]}}</td>
                           <td>{{d[2]}}</td>
-                          <td><button class="btn btn-warning" style="color: white; padding: 1px 19px ">Assign</button>
-                              <button class="btn btn-danger" style="color: white; padding: 1px 15px">Remove</button>
-                          {{d[3]}}</td>
+                          <td>
+                              <button v-if="d[4]==''" @click="assign(d[3])" class="btn btn-warning" style="color: white; padding: 1px 19px ">Assign</button>
+                              <button v-if="d[4]=='true'" @click="remove(d[3])" class="btn btn-danger" style="color: white; padding: 1px 15px">Remove</button>
+                          </td>
                         </tr>
                       </table>
                   </div>  
@@ -37,36 +38,43 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
-  name: 'My_documents',
+  name: 'Admin',
   data() {
     return {
       documents: [],
       doc: [],
-      success: '',
       user: '',
     }
   },
-  
   mounted() {
-
     axios.get('/eventAll')
     .then(res => {
 
         this.documents=res.data            
         this.documents.forEach(element => {
         let name=element.data_user.fname+" "+element.data_user.lname;
-        this.doc.push([name, element.title, element.role, element.id]);
+        this.doc.push([name, element.title, element.role, element.id, element.status]);
         });
     })
-
-
   },
   methods: {
     cancel(){
         this.$router.push('/username');
-    }
+    },
+    assign(idEvent){ 
+        axios.put('/AssignEvent/'+idEvent)        
+        .then((res) => 
+        {
+          window.location.reload();
+        })
+    },
+    remove(idEvent){
+        axios.delete('/event/'+idEvent)
+        .then((res) => {
+          window.location.reload();
+        })
+    },
   }
 }
 </script>

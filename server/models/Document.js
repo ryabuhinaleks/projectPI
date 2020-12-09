@@ -19,7 +19,7 @@ module.exports = db.sequelize.define(
       type: Sequelize.STRING
     },
     day: {
-      type: Sequelize.DATE
+      type: Sequelize.STRING
     },
     role: {
       type: Sequelize.STRING

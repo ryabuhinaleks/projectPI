@@ -33,7 +33,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'My_documents',
   data() {
@@ -43,7 +42,6 @@ export default {
       id: '',
     }
   },
-  
   mounted() {
     axios.get('/user', { headers: { token: localStorage.getItem('token')}})
       .then(res => {
@@ -57,8 +55,8 @@ export default {
   },
   methods: {
     add(){
+        this.$router.push('/documents/newDocument');
     }
   }
 }
 </script>
-

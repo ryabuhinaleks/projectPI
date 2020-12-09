@@ -9,6 +9,7 @@ import Pin from '@/components/Pin'
 import Events from '@/components/Events'
 import Event from '@/components/Event'
 import CreateEvent from '@/components/CreateEvent'
+import CreateDocument from '@/components/CreateDocument'
 import EventInformation from '@/components/EventInformation'
 import Participants from '@/components/Participants'
 import Dates from '@/components/Dates'
@@ -17,6 +18,7 @@ import Confirmation from '@/components/Confirmation'
 import DocumentInformation from '@/components/DocumentInformation'
 import My_documents from '@/components/My_documents'
 import Admin from '@/components/Admin'
+import UpdateDocument from '@/components/UpdateDocument'
 
 
 Vue.use(Router)
@@ -107,6 +109,16 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: Admin
+    },
+    {
+      path: '/documents/newDocument',
+      name: 'CreateDocument',
+      component: CreateDocument
+    },
+    {
+      path: '/documents/:id_doc/update',
+      name: 'UpdateDocument',
+      component: UpdateDocument
     },
   ]
 })

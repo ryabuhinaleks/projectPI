@@ -65,6 +65,7 @@ router.post('/createEvent', (req, res, next) => {
       fDate: req.body.event.fDate,
       img: req.body.event.img,
       participants: '-',
+      status: '',
     })
     newEvent.save();
   
@@ -79,12 +80,30 @@ router.post('/createEvent', (req, res, next) => {
 router.put('/updateEvent', (req, res, next) => 
 {
   Event.update(
-    { title: req.body.event.title, sDate: req.body.event.sDate, c1Date: req.body.event.c1Date, c_1Date: req.body.event.c_1Date, fDate: req.body.event.fDate,  participants: req.body.event.participants},
+    { title: req.body.event.title, sDate: req.body.event.sDate, c1Date: req.body.event.c1Date, c_1Date: req.body.event.c_1Date, fDate: req.body.event.fDate,  participants: req.body.event.participants,  status: req.body.event.status},
     { where: { id: req.body.event.id } })   
     return res.status(200).json({
-      title: 'Данные обновлены!',
+      title: 'Data updated',
     })
 })
 
 
+router.put('/AssignEvent/:id', (req, res, next) => 
+{
+  Event.update(
+    { status: 'true'},
+    { where: { id: req.params.id } })   
+    return res.status(200).json({
+      title: 'Data updated',
+    })
+})
+
+router.delete('/event/:id', (req, res, next) => {
+  Event.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.send("Document is deleted");
+})
 module.exports = router

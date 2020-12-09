@@ -2,7 +2,6 @@
  <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-8" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;"> 
-
           <div style="font-size: 34px; height: 58px; float: left;">{{event.title}}</div>
           <form  @submit.prevent="">
                 <div style="padding: 13px 13px 2px 13px;">
@@ -33,7 +32,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'Documents',
   data() {
@@ -44,13 +42,11 @@ export default {
       id: this.$route.params.id,
     }
   },
-  
   mounted() {
     axios.get('/documents/'+this.id)
       .then(res => {
         this.documents=res.data;
       })
-
     axios.get('/event/'+this.id, { headers: { token: localStorage.getItem('token')}})
       .then(res => {
         this.event=res.data;
@@ -63,4 +59,3 @@ export default {
   }
 }
 </script>
-

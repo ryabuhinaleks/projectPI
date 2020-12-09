@@ -1,20 +1,16 @@
 <template>
-
  <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;">      
           <div style="font-size: 34px; height: 70px;"></div>
           <form  @submit.prevent="">
-
             <div class="form-group" style="display: inline-block;vertical-align: top;">              
               <img :src="require('@/assets/event/'+img)" style="width: 238px;height: 143px;"></br>
               <input type="file" name="image_uploads" style="cursor: pointer;"@change="onAttachmentChange"></br>
               <button class="btn btn-primary" style="margin-top: -37px;">Upload</button></br>
               <button @click="delete_img" class="btn btn-primary">Delete</button>
             </div>
-
-            <div style="display: inline-block;text-align: right;margin-left: 40px;">
-              
+            <div style="display: inline-block;text-align: right;margin-left: 40px;">        
               <div style="border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Event Information</b>
@@ -27,7 +23,6 @@
                   </div>  
                 </div>
               </div>
-
               <div style="margin-top: 20px;border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Dates Information</b>
@@ -43,7 +38,6 @@
                   </div>  
                 </div>
               </div>
-
               <div style="margin-top: 20px;border: 1px solid rgb(68, 104, 142);">
                 <div style="text-align: justify;padding-left: 13px;color: white;background-color: rgb(0 123 255);">
                   <b>Participants</b>
@@ -63,7 +57,6 @@
                    @click="edit_documents"></br>
                 </div>             
               </div></br>
-              <button @click="" class="btn btn-primary" style="width: 78px;">Ok</button>
               <button @click="cancel" class="btn btn-primary" style="width: 78px;">Cancel</button></br>
             </div>
           </form>
@@ -74,7 +67,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'Username',
+  name: 'Event',
   data() {
     return {
       img: '1.jpg',
@@ -83,7 +76,6 @@ export default {
       id: this.$route.params.id,
     }
   },
-  
   mounted() {
     let input = document.querySelector('input');
     input.style.opacity = 0;
@@ -117,7 +109,6 @@ export default {
           this.img=e.target.files[0].name;
         })
     },
-
     delete_img(){
         axios.put(`/imgEvent`,{ img: '1.jpg', id: this.id})        
         .then((res) => 
@@ -128,4 +119,3 @@ export default {
   }
 }
 </script>
-

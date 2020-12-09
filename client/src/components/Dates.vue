@@ -30,7 +30,6 @@
                     </div>
                   </div>  
                 </div>
-
           </form>
         </div>
     </div>
@@ -38,18 +37,15 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
-  name: 'EventInformation',
+  name: 'Dates',
   data() {
     return {
       event: '',
       success: '',
       id: this.$route.params.id,
-
     }
   },
-  
   mounted() {
       axios.get('/event/'+this.id, { headers: { token: localStorage.getItem('token')}})
       .then(res => {
@@ -60,7 +56,6 @@ export default {
     cancel(){
           this.$router.push('/event/'+this.id);
     },
-    
     update(){
         axios.put(`/updateEvent`,{ event: this.event})        
         .then((res) => 
@@ -71,4 +66,3 @@ export default {
   }
 }
 </script>
-

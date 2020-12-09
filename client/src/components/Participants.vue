@@ -3,7 +3,6 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;"> 
           <form  @submit.prevent="">
-
                 <div style="padding: 13px 13px 2px 13px;">
                   <div style="text-align: initial;">
                     <label style="padding-right: 9px;"><b>Participants: </b></label><input type="text" class="form-control"  v-model="event.participants"></br>
@@ -14,7 +13,6 @@
                     </div>
                   </div>  
                 </div>
-
           </form>
         </div>
     </div>
@@ -22,7 +20,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'EventInformation',
   data() {
@@ -33,7 +30,6 @@ export default {
 
     }
   },
-  
   mounted() {
       axios.get('/event/'+this.id, { headers: { token: localStorage.getItem('token')}})
       .then(res => {
@@ -44,7 +40,6 @@ export default {
     cancel(){
           this.$router.push('/event/'+this.id);
     },
-    
     update(){
         axios.put(`/updateEvent`,{ event: this.event})        
         .then((res) => 
@@ -55,4 +50,3 @@ export default {
   }
 }
 </script>
-

@@ -3,7 +3,6 @@
     <div class="row justify-content-center mt-5">
         <div class="col-md-5" style="background-color: white;padding: 25px; border: 3px solid #d0cdcd;"> 
           <form  @submit.prevent="">
-
                 <div style="padding: 13px 13px 2px 13px;">
                   <div style="text-align: initial;">
                     <label style="padding-right: 9px;"><b>Enter Pin: </b></label><input type="password" class="form-control"  v-model="pin"></br>
@@ -22,9 +21,8 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
-  name: 'UpdateLoginInformation',
+  name: 'Confirmation',
   data() {
     return {
       pin: '',
@@ -34,7 +32,6 @@ export default {
       id_doc: this.$route.params.id_doc,
     }
   },
-  
   mounted() {
     axios.get('/user', { headers: { token: localStorage.getItem('token')}})
       .then(res => {
@@ -45,7 +42,6 @@ export default {
     cancel(){
         this.$router.push('/event/'+this.id+'/documents/');
     },
-    
     save(){
       if(this.pin==this.pin_2)
       {

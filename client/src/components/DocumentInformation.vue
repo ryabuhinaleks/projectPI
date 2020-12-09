@@ -14,7 +14,7 @@
                     <label style="padding-right: 9px;"><b>Document Title: </b></label>{{document.title}}</br>
                     <label style="padding-right: 9px;"><b>Day: </b></label>{{document.day}}</br>
                     <label style="padding-right: 9px;"><b>Document Content: </b></label>{{document.content}}</br>
-                    <label style="padding-right: 9px;"><b>For: </b>{{document.role}}</label>
+                    <label style="padding-right: 9px;"><b>For: </b>{{document.role}}</label></br>
                   </div>  
                 </div>
               </div></br>
@@ -23,7 +23,6 @@
                 <button @click="deletee" class="btn btn-danger" style="width: 78px;">Delete</button></br>
                 <span class='success' style="color: green;">{{success}}</span> 
               </div>
-
           </form>
         </div>
     </div>
@@ -31,7 +30,6 @@
 </template>
 <script>
 import axios from 'axios';
-
 export default {
   name: 'DocumentInformation',
   data() {
@@ -41,8 +39,7 @@ export default {
       id: this.$route.params.id,
       id_doc: this.$route.params.id_doc,
     }
-  },
-  
+  },  
   mounted() {
       axios.get('/document/'+this.id_doc)
       .then(res => {
@@ -51,12 +48,11 @@ export default {
   },
   methods: {
     edit_dates(){
-
+          this.$router.push('/documents/'+this.id_doc+'/update');
     },
     cancel(){
           this.$router.push('/documents');
     },
-    
     update(){
         axios.put(`/updateEvent`,{ })        
         .then((res) => 
@@ -65,12 +61,11 @@ export default {
         })
     },
     deletee(){
-        axios.delete('/document/'+this.id_doc,
-        ).then((res) => {
+        axios.delete('/document/'+this.id_doc)
+        .then((res) => {
           this.$router.push('/documents');
         })
     }
   }
 }
 </script>
-
